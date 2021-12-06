@@ -3,7 +3,10 @@ import ContenedorProductos from "../classes/ContenedorProductos.js";
 import upload from "../services/uploader.js";
 const router = express.Router();
 const contenedor = new ContenedorProductos();
+//import { io } from "../app.js";
+import { io } from "../app.js";
 
+//ver imports
 //////////
 /// GETS
 router.get("/", (req, res) => {
@@ -20,12 +23,6 @@ router.get("/:pid", (req, res) => {
 });
 
 /// POSTS
-router.post("/", (req, res) => {
-  let product = req.body;
-  contenedor.registerProduct(product).then((result) => {
-    res.send(result);
-  });
-});
 router.post("/", upload.single("image"), (req, res) => {
   let file = req.file;
   let product = req.body;
@@ -33,6 +30,12 @@ router.post("/", upload.single("image"), (req, res) => {
     req.protocol + "://" + req.hostname + ":8080" + "/images/" + file.filename;
   contenedor.registerProduct(product).then((result) => {
     res.send(result);
+    if (result.status === "success") {
+      contenedor.getAllProducts().then((result) => {
+        //console.log(results)
+        io.emit("deliverProducts", result);
+      });
+    }
   });
 });
 

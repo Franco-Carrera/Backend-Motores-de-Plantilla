@@ -5,10 +5,18 @@
   },
   {
     "id": 2,
+    "name": "Lampard",
+    "specie": "tecnology",
+    "price": "$3.680",
+    "thumbnail": "http://localhost:8080/images/1638505621996tienda.png",
     "adopted": false
   },
   {
     "id": 3,
+    "name": "IONIC 23",
+    "specie": "tecnology",
+    "price": "$2.890",
+    "thumbnail": "http://localhost:8080/images/1638758235407mouse.jpg",
     "adopted": false
   }
 ]

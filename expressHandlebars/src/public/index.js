@@ -1,3 +1,25 @@
+const socket = io();
+
+//-------------------- Eventos de Socket ----------------
+
+socket.on("deliverProducts", (data) => {
+  let products = data.payload;
+  console.log(products);
+  fetch("templates/productTable.handlebars")
+    .then((string) => string.text())
+    .then((template) => {
+      const processedTemplate = Handlebars.compile(template);
+      const templateObject = {
+        products: products,
+      };
+      const html = processedTemplate(templateObject);
+      let div = document.getElementById("productTable");
+      div.innerHTML = html;
+    });
+});
+
+// ------------------- ----------------------------
+
 document.addEventListener("submit", enviarFormulario);
 
 function enviarFormulario(event) {

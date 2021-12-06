@@ -1,0 +1,15 @@
+- let exist = foodArray.length>0?true:false;
+html  
+    include includes/head.pug
+    body 
+        h1(class="title")="Menu de foods"
+          if exist
+              ul(class="ul")
+                   each comida in foodArray 
+                        li 
+                            div(class="container")
+                               p(class="text")=comida.name 
+                               p=(comida.price)         
+          else
+              p="No hay productos por mostrar. Qué tristeza :("
+                                    

@@ -5,6 +5,7 @@ import ContenedorProductos from "./classes/ContenedorProductos.js";
 import productsRouter from "./routes/productos.js";
 import usersRouter from "./routes/users.js";
 import upload from "./services/uploader.js";
+import { Server } from "socket.io";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -13,6 +14,9 @@ const contenedor = new ContenedorProductos();
 const server = app.listen(PORT, () => {
   console.log("Listening on port: ", PORT);
 });
+export const io = new Server(server);
+
+//const io = new Server(server);
 
 //handlebars
 app.engine("handlebars", engine());
@@ -39,7 +43,7 @@ app.post("/api/adoption", (req, res) => {
   });
 });
 
-////
+////VER COMO COLOCAR RUTA PUBLIC IMAGE, CON CLASE SEGUIMIENTO
 ////Post UPLOADfile
 app.post(
   "/api/uploadfile",
@@ -74,4 +78,9 @@ app.get("/view/products", (req, res) => {
   });
 });
 
-/// cambiar 67line pets and 69
+//socket
+io.on("connection", async (socket) => {
+  console.log(`El socket ${socket.id} se ha conetado`);
+  let products = await contenedor.getAllProducts();
+  socket.emit("deliverProducts", products);
+});

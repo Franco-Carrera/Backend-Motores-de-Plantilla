@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "adopted": false
+  },
+  {
+    "id": 2,
+    "name": "Lampard",
+    "specie": "tecnology",
+    "price": "$3.680",
+    "thumbnail": "http://localhost:8080/images/1638505621996tienda.png",
+    "adopted": false
+  }
+]

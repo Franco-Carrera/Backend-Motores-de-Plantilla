@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="button" onclick="location.href='/view/products'" value="Ver productos :)">
+
+  <h2>Subida de products en pug</h2>
+
+  <form id="productForm" name="productForm" class="form">
+    <div class="form-floating form-input">
+      <input class="form-control" name="name" id="name" placeholder="name" required>
+      <label for="name">Nombre</label>
+    </div>
+    <div class="form-floating form-input">
+      <select class="form-select" name="specie" id="specie">
+        <option value="tecnology" label="Compu" selected></option>
+        <option value="artistic" label="Pintura"></option>
+        <option value="home" label="Sillon"></option>
+        <option value="tecnology" label="Mouse"></option>
+        <option value="artistic" label="Pincel"></option>
+        <option value="home" label="Silla"></option>
+        <option value="tecnology" label="Monitor"></option>
+      </select>
+      <label for="specie">Especie</label>
+    </div>
+    <div class="form-floating form-input">
+      <!-- cambiar por price id -->
+      <input class="form-control" name="price" id="age" placeholder="price" required>
+      <label for="price">Price</label>
+    </div>
+    <div class="form-floating form-input">
+      <input class="form-control" type="file" accept="image/*" name="image" id="image" required>
+      <label for="image">Imagen</label>
+    </div>
+    <div style="display:flex">
+      <div>
+        <img id="preview">
+      </div>
+      <div style="width:100%; padding-top:100px">
+        <p class="image-text">Sube la imagen del producto</p>
+      </div>
+    </div>
+    <div style="margin-top:30px; display:flex; justify-content: center;">
+      <input type="submit" class="submit-button">
+    </div>
+
+  </form>
+
+
+
+
+  <script src="index.js"></script>
+</body>
+
+</html>
